@@ -1,6 +1,6 @@
 {
-  "name": "vue-boilerplate",
-  "description": "Vue project boilerplate with vite, gsap, and aos.",
+  "name": "honiismweb",
+  "description": "Business and personal portfolio for Honiism (Honey).",
   "version": "0.0.0",
   "private": true,
   "browserslist": [
@@ -29,7 +29,7 @@
     "@rushstack/eslint-patch": "^1.2.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-prettier": "^7.1.0",
-    "@vue/test-utils": "^2.3.0",
+    "@vue/test-utils": "^2.2.7",
     "eslint": "^8.34.0",
     "eslint-plugin-vue": "^9.9.0",
     "jsdom": "^21.1.0",
