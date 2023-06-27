@@ -1,16 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Landing from '../views/Landing.vue'
+import Main from '../views/Main.vue'
 
 // use component: () => import('path') for lazy-loading.
 const routes = [
     {
         path: '/',
-        name: 'landing',
-        component: Landing
+        name: 'main',
+        component: Main
     },
     {
         path: "/:pathMatch(.*)*",
-        component: Landing
+        component: Main
     }
 ]
 
