@@ -19,30 +19,30 @@
 </style>
 
 <script setup>
-    import { onMounted } from 'vue'
-    import { gsap } from '../../js/vendor'
+    import { onMounted } from 'vue';
+    import { gsap } from '../../js/vendor';
 
-    import Footer from '../../components/Footer.vue'
+    import Footer from '../../components/Footer.vue';
 
     const props = defineProps({
         viewport: Object
-    })
+    });
 
     function parallelAnim() {
         // add check for non hover devices to return
         
-        const parallelEl = document.querySelectorAll(".parallax")
+        const parallelEl = document.querySelectorAll(".parallax");
 
-        let xVal = 0
-        let yVal = 0
+        let xVal = 0;
+        let yVal = 0;
 
         window.addEventListener("mousemove", (e) => {
-            xVal = e.clientX
-            yVal = e.clientY
-        })
+            xVal = e.clientX;
+            yVal = e.clientY;
+        });
     }
 
     onMounted(() => {
-        parallelAnim()
-    })
+        parallelAnim();
+    });
 </script>

@@ -1,9 +1,9 @@
-import { fileURLToPath, URL } from 'node:url'
-import { defineConfig } from 'vite'
-import { createHtmlPlugin } from 'vite-plugin-html'
-import vue from '@vitejs/plugin-vue'
+import { fileURLToPath, URL } from 'node:url';
+import { defineConfig } from 'vite';
+import { createHtmlPlugin } from 'vite-plugin-html';
+import vue from '@vitejs/plugin-vue';
 
-const isProd = process.env.NODE_ENV == 'production'
+const isProd = process.env.NODE_ENV == 'production';
 
 export default defineConfig({
     resolve: {
@@ -42,4 +42,4 @@ export default defineConfig({
             }
         })
     ]
-})
+});

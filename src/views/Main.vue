@@ -7,9 +7,9 @@
 </style>
 
 <script setup>
-    import Landing from '../views/viewComps/Landing.vue'
+    import Landing from '../views/viewComps/Landing.vue';
 
     const props = defineProps({
         viewport: Object
-    })
+    });
 </script>
