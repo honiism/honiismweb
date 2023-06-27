@@ -3,8 +3,8 @@
 </template>
 
 <script setup>
-    import './styles/app.scss' // global styles
-    import { onMounted, ref } from 'vue'
+    import './styles/app.scss'; // global styles
+    import { onMounted, ref } from 'vue';
 
     const viewport = ref({
         w: window.innerWidth,
@@ -21,7 +21,7 @@
         isMax850: window.innerWidth <= 850,
         isMax1000: window.innerWidth <= 1000,
         isMax1150: window.innerWidth <= 1150
-    })
+    });
 
     function updateViewport() {
         viewport.value = {
@@ -39,10 +39,10 @@
             isMax850: window.innerWidth <= 850,
             isMax1000: window.innerWidth <= 1000,
             isMax1150: window.innerWidth <= 1150
-        }
+        };
     }
 
     onMounted(() => {
-        window.addEventListener('resize', updateViewport)
-    })
+        window.addEventListener('resize', updateViewport);
+    });
 </script>
