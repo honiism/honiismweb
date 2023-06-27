@@ -1,13 +1,13 @@
 <template>
     <Landing :viewport="viewport"/>
-    <Footer />
 </template>
 
-<script setup>
-    import { gsap } from '../js/vendor'
+<style scoped lang="scss">
+    // Styling
+</style>
 
+<script setup>
     import Landing from '../views/viewComps/Landing.vue'
-    import Footer from '../components/Footer.vue'
 
     const props = defineProps({
         viewport: Object
