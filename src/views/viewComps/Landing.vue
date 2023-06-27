@@ -1,6 +1,6 @@
 <template>
     <h1 class="heading">Hey!</h1>
-    <img src="../../assets/images/landing/purple_planet.svg">
+    <img src="../../assets/images/purple_planet.svg">
 </template>
 
 <style scoped lang="scss">
