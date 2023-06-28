@@ -1,16 +1,23 @@
 <template>
     <main>
-        <img class="parallax parallax--bg" src="../../assets/images/landing_bg.png" data-speedx="0.3" data-speedy="0.2">
-        <img class="parallax parallax--squiggle_b noZ" src="../../assets/images/squiggles_b.svg" data-speedx="0" data-speedy="0.02">
-        <img class="parallax parallax--squiggle_t noZ" src="../../assets/images/squiggles_t.svg" data-speedx="0" data-speedy="0.02">
-        <img class="parallax parallax--sparkles_1" src="../../assets/images/star_sparkles.svg" data-speedx="0.27" data-speedy="0.15">
-        <img class="parallax parallax--sparkles_2" src="../../assets/images/star_sparkles.svg" data-speedx="0.195" data-speedy="0.1">
-        <img class="parallax parallax--ring_planet" src="../../assets/images/ring_planet.svg" data-speedx="0.25" data-speedy="0.095">
-        <img class="parallax parallax--title" src="../../assets/images/landing_title.svg" data-speedx="0.125" data-speedy="0.09">
-        <img class="parallax parallax--stars_3" src="../../assets/images/3_stars.svg" data-speedx="0.1" data-speedy="0.085">
-        <img class="parallax parallax--stars_2" src="../../assets/images/2_stars.svg" data-speedx="0.16" data-speedy="0.08">
-        <img class="parallax parallax--blue_planet" src="../../assets/images/blue_planet.svg" data-speedx="0.1" data-speedy="0.075">
-        <img class="parallax parallax--purple_planet" src="../../assets/images/purple_planet.svg" data-speedx="0.08" data-speedy="0.07">
+        <img class="parallax parallax--bg" src="../../assets/images/landing_bg.png" data-speedx="0.3" data-speedy="0.3">
+
+        <starsBg :stars-num="10"/>
+
+        <img class="parallax parallax--squiggle_1b noZ" src="../../assets/images/squiggles_1b.svg" data-speedx="0" data-speedy="0.1">
+        <img class="parallax parallax--squiggle_2b noZ" src="../../assets/images/squiggles_2b.svg" data-speedx="0" data-speedy="0.095">
+        <img class="parallax parallax--squiggle_3b noZ" src="../../assets/images/squiggles_3b.svg" data-speedx="0" data-speedy="0.09">
+        <img class="parallax parallax--squiggle_1t noZ" src="../../assets/images/squiggles_1t.svg" data-speedx="0" data-speedy="0.1">
+        <img class="parallax parallax--squiggle_2t noZ" src="../../assets/images/squiggles_2t.svg" data-speedx="0" data-speedy="0.095">
+        <img class="parallax parallax--squiggle_3t noZ" src="../../assets/images/squiggles_3t.svg" data-speedx="0" data-speedy="0.09">
+        <img class="parallax parallax--sparkles_1" src="../../assets/images/star_sparkles.svg" data-speedx="0.27" data-speedy="0.095">
+        <img class="parallax parallax--sparkles_2" src="../../assets/images/star_sparkles.svg" data-speedx="0.25" data-speedy="0.09">
+        <img class="parallax parallax--ring_planet" src="../../assets/images/ring_planet.svg" data-speedx="0.15" data-speedy="0.085">
+        <img class="parallax parallax--title" src="../../assets/images/landing_title.svg" data-speedx="0.12" data-speedy="0.08">
+        <img class="parallax parallax--stars_3" src="../../assets/images/3_stars.svg" data-speedx="0.1" data-speedy="0.075">
+        <img class="parallax parallax--stars_2" src="../../assets/images/2_stars.svg" data-speedx="0.16" data-speedy="0.07">
+        <img class="parallax parallax--blue_planet" src="../../assets/images/blue_planet.svg" data-speedx="0.1" data-speedy="0.065">
+        <img class="parallax parallax--purple_planet" src="../../assets/images/purple_planet.svg" data-speedx="0.08" data-speedy="0.065">
     </main>
 </template>
 
@@ -21,6 +28,8 @@
 <script setup>
     import { onMounted } from 'vue';
     import { gsap } from '../../js/vendor';
+
+    import starsBg from '../../components/StarsBg.vue';
 
     const props = defineProps({
         viewport: Object
@@ -59,6 +68,19 @@
                     + `translateY(calc(-50% + ${yVal * speedY}px))`
                     + `perspective(2300px) translateZ(${zVal}px)`;
         });
+    }
+
+    function addSpin(timeScale1, timeScale2, timeScale3) {
+        const purplePlanetTl = gsap.timeline();
+
+        purplePlanetTl.to(
+            ".parallax--ring_planet",
+            {
+                rotation: "360",
+                repeat: -1,
+                ease: "none",
+            }
+        ).timeScale(0.2);
     }
 
     onMounted(() => {
