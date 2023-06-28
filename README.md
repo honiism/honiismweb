@@ -111,7 +111,7 @@ function transformParallax(cursorPosX) {
 ```
 
 ### 4. Important!
-Based on the code below, you can see that the code is only run when our components are added in the DOM. So, if we want to get `parallelEl` (parallel elements), we can't define the variable in `<script setup>` directly. We need to do that when our components are already added in the DOM. This prevents `parallelEl` from being an empty list.
+Based on the code below, you can see that the code is only run when our components are added in the DOM. So, if we want to get `parallaxEl` (parallax elements), we can't define the variable in `<script setup>` directly. We need to do that when our components are already added in the DOM. This prevents `parallaxEl` from being an empty list.
 
 ```js
 let parallaxEl;
