@@ -54,7 +54,7 @@
                 zVal = (cursorPosX - parseFloat(getComputedStyle(el).left)) * isInLeft * 0.2;
             }
 
-            el.style.transform = `translateX(calc(-50% + ${-xVal * speedX}px))`
+            el.style.transform = `translateX(calc(-50% + ${xVal * speedX}px))`
                     + `rotateY(${rotateDeg}deg)`
                     + `translateY(calc(-50% + ${yVal * speedY}px))`
                     + `perspective(2300px) translateZ(${zVal}px)`;
@@ -66,6 +66,7 @@
         
         transformParallax(0);
 
+        // use touchmove event for mobile
         window.addEventListener("mousemove", (e) => {
             xVal = e.clientX - window.innerWidth / 2;
             yVal = e.clientY - window.innerHeight / 2;
