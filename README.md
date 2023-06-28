@@ -69,9 +69,10 @@ parallaxEl.forEach((el) => {
 ```
 
 ### 3. Transformation
-- We need to translate the x axis of an element by adding the distance of our mouse (x) to -50% and also multiplying it by the speed so it doesn't move too fast.
+- We need to translate the x axis of an element by adding the distance of our mouse in the x axis (`xVal`) to -50% and also multiplying it by the speed so it doesn't move too fast.
+    - Note: `xVal` is negative so it has opposite effects.
 - We'll also add rotation by a certain degrees.
-- Then we'll also do the same thing with translateY, adding the distance of our mouse (y) and multiply it by the speedY.
+- Then we'll also do the same thing with translateY, adding the distance of our mouse in the y axis (`yVal`) and multiply it by the speedY.
 - Then we put the layers 23000px away from us using the perspective. 
 - `isInLeft` is a variable to check if half of the screen is smaller than the left attribute.
 If it is then this means that the element is located in the left side of the screen.
