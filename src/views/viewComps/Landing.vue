@@ -10,7 +10,7 @@
         <img class="parallax parallax--stars_3" src="../../assets/images/3_stars.svg" data-speedx="0.1" data-speedy="0.085">
         <img class="parallax parallax--stars_2" src="../../assets/images/2_stars.svg" data-speedx="0.16" data-speedy="0.08">
         <img class="parallax parallax--blue_planet" src="../../assets/images/blue_planet.svg" data-speedx="0.1" data-speedy="0.075">
-        <img class="parallax parallax--purple_planet" src="../../assets/images/purple_planet.svg" data-speedx="0.07" data-speedy="0.07">
+        <img class="parallax parallax--purple_planet" src="../../assets/images/purple_planet.svg" data-speedx="0.08" data-speedy="0.07">
     </main>
 </template>
 
