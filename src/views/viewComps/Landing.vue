@@ -47,7 +47,9 @@
 
             let speedX = el.dataset.speedx;
             let speedY = el.dataset.speedy;
-            let isInLeft = parseFloat(getComputedStyle(el).left) < window.innerWidth / 2 ? 1 : -1;
+            let elementLeft = parseFloat(getComputedStyle(el).left);
+
+            let isInLeft = elementLeft < window.innerWidth / 2 ? 1 : -1;
 
             let zVal;
 
@@ -55,38 +57,87 @@
             if (el.classList.contains("noZ")) {
                 zVal = 0;
             } else {
-                zVal = (cursorPosX - parseFloat(getComputedStyle(el).left)) * isInLeft * 0.2;
+                zVal = (cursorPosX - elementLeft) * isInLeft * 0.2;
             }
 
-            el.style.transform = `translateX(calc(-50% + ${-xVal * speedX}px))`
-                    + `rotateY(${rotateDeg}deg)`
-                    + `translateY(calc(-50% + ${yVal * speedY}px))`
-                    + `perspective(2300px) translateZ(${zVal}px)`;
+            gsap.set(el, {
+                xPercent: "-50",
+                yPercent: "-50",
+                x: -xVal * speedX,
+                y: yVal * speedY,
+                z: zVal
+            });
         });
     }
 
-    function addSpin(timeScale1, timeScale2, timeScale3) {
-        const purplePlanetTl = gsap.timeline();
+    function addAnimations() {
+        const titleTl = gsap.timeline({repeat: -1});
 
-        gsap.set("main", {
-            perspective: "2300px"
-        });
-
-        purplePlanetTl.to(
+        gsap.to(
             ".parallax--ring_planet",
             {
                 rotation: "360",
                 repeat: -1,
                 ease: "none",
             }
-        ).timeScale(0.2);
+        ).timeScale(0.01);
+
+        gsap.to(
+            ".parallax--purple_planet",
+            {
+                rotation: "360",
+                repeat: -1,
+                ease: "none"
+            }
+        ).timeScale(0.02);
+
+        gsap.to(
+            ".parallax--blue_planet",
+            {
+                rotation: "360",
+                repeat: -1,
+                ease: "none"
+            }
+        ).timeScale(0.025);
+
+        titleTl.to(
+            ".parallax--title",
+            {
+                duration: 1.5,
+                y: "-=20",
+                ease: "sine.easeInOut"
+            }
+        ).to(
+            ".parallax--title",
+            {
+                duration: 1.5,
+                y: "+=20",
+                ease: "sine.easeInOut"
+            }
+        )
     }
 
     onMounted(() => {
         parallaxEl = document.querySelectorAll(".parallax");
         
+        gsap.set("main", {
+            perspective: "2300px"
+        });
+
         transformParallax(0);
-        // addSpin(0,0,0);
+        addAnimations();
+
+        if (window.matchMedia("(pointer: coarse)").matches) {
+            window.addEventListener("touchmove", (e) => {
+                xVal = e.clientX - window.innerWidth / 2;
+                yVal = e.clientY - window.innerHeight / 2;
+                rotateDeg = (xVal / (window.innerWidth / 2)) * 20;
+
+                transformParallax(e.clientX);
+            });
+
+            console.log('test')
+        }
 
         window.addEventListener("mousemove", (e) => {
             xVal = e.clientX - window.innerWidth / 2;
