@@ -1,9 +1,6 @@
 <template>
     <main>
         <img class="parallax parallax--bg" src="../../assets/images/landing_bg.png" data-speedx="0.3" data-speedy="0.3">
-
-        <starsBg :stars-num="10"/>
-
         <img class="parallax parallax--squiggle_1b noZ" src="../../assets/images/squiggles_1b.svg" data-speedx="0" data-speedy="0.1">
         <img class="parallax parallax--squiggle_2b noZ" src="../../assets/images/squiggles_2b.svg" data-speedx="0" data-speedy="0.095">
         <img class="parallax parallax--squiggle_3b noZ" src="../../assets/images/squiggles_3b.svg" data-speedx="0" data-speedy="0.09">
@@ -28,8 +25,6 @@
 <script setup>
     import { onMounted } from 'vue';
     import { gsap } from '../../js/vendor';
-
-    import starsBg from '../../components/StarsBg.vue';
 
     const props = defineProps({
         viewport: Object
@@ -73,6 +68,10 @@
     function addSpin(timeScale1, timeScale2, timeScale3) {
         const purplePlanetTl = gsap.timeline();
 
+        gsap.set("main", {
+            perspective: "2300px"
+        });
+
         purplePlanetTl.to(
             ".parallax--ring_planet",
             {
@@ -87,8 +86,8 @@
         parallaxEl = document.querySelectorAll(".parallax");
         
         transformParallax(0);
+        // addSpin(0,0,0);
 
-        // use touchmove event for mobile
         window.addEventListener("mousemove", (e) => {
             xVal = e.clientX - window.innerWidth / 2;
             yVal = e.clientY - window.innerHeight / 2;
