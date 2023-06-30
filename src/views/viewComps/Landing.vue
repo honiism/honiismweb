@@ -32,8 +32,7 @@
 
     let parallaxEl;
 
-    let xVal = 0;
-    let yVal = 0;
+    const mouse = {x: 0, y: 0, z: 0};
     let rotateDeg = 0;
 
     function transformParallax(cursorPosX) {
@@ -51,32 +50,30 @@
 
             let isInLeft = elementLeft < window.innerWidth / 2 ? 1 : -1;
 
-            let zVal;
-
             // can be replaced with speedz = 0 when we add the data-speedz attribute.
             if (el.classList.contains("noZ")) {
-                zVal = 0;
+                mouse.z = 0;
             } else {
-                zVal = (cursorPosX - elementLeft) * isInLeft * 0.2;
+                mouse.z = (cursorPosX - elementLeft) * isInLeft * 0.2;
             }
 
             gsap.set(el, {
                 xPercent: "-50",
                 yPercent: "-50",
-                x: -xVal * speedX,
-                y: yVal * speedY,
-                z: zVal
+                x: -mouse.x * speedX,
+                y: mouse.y * speedY,
+                z: mouse.z,
+                rotationY: rotateDeg,
+                transition: "0.45s cubic-bezier(0.2, 0.49, 0.32, 0.99)" // find another easing
             });
         });
     }
 
     function addAnimations() {
-        const titleTl = gsap.timeline({repeat: -1});
-
         gsap.to(
             ".parallax--ring_planet",
             {
-                rotation: "360",
+                rotation: "-360",
                 repeat: -1,
                 ease: "none",
             }
@@ -99,22 +96,6 @@
                 ease: "none"
             }
         ).timeScale(0.025);
-
-        titleTl.to(
-            ".parallax--title",
-            {
-                duration: 1.5,
-                y: "-=20",
-                ease: "sine.easeInOut"
-            }
-        ).to(
-            ".parallax--title",
-            {
-                duration: 1.5,
-                y: "+=20",
-                ease: "sine.easeInOut"
-            }
-        )
     }
 
     onMounted(() => {
@@ -129,20 +110,18 @@
 
         if (window.matchMedia("(pointer: coarse)").matches) {
             window.addEventListener("touchmove", (e) => {
-                xVal = e.clientX - window.innerWidth / 2;
-                yVal = e.clientY - window.innerHeight / 2;
-                rotateDeg = (xVal / (window.innerWidth / 2)) * 20;
+                mouse.x = e.clientX - window.innerWidth / 2;
+                mouse.y = e.clientY - window.innerHeight / 2;
+                rotateDeg = (mouse.x / (window.innerWidth / 2)) * 20;
 
                 transformParallax(e.clientX);
             });
-
-            console.log('test')
         }
 
         window.addEventListener("mousemove", (e) => {
-            xVal = e.clientX - window.innerWidth / 2;
-            yVal = e.clientY - window.innerHeight / 2;
-            rotateDeg = (xVal / (window.innerWidth / 2)) * 10;
+            mouse.x = e.clientX - window.innerWidth / 2;
+            mouse.y = e.clientY - window.innerHeight / 2;
+            rotateDeg = (mouse.x / (window.innerWidth / 2)) * 10;
 
             transformParallax(e.clientX);
         });
