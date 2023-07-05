@@ -27,7 +27,8 @@
     import { gsap } from '../../js/vendor';
 
     const props = defineProps({
-        viewport: Object
+        viewport: Object,
+        device: Object
     });
 
     let parallaxEl;
