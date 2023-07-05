@@ -9,7 +9,7 @@
 
     import Landing from "../views/viewComps/Landing.vue";
     import Warning from "../components/LandscapeWarning.vue";
-    import Footer from "../components/Footer.vue"
+    import Footer from "../components/Footer.vue";
 
     const props = defineProps({
         viewport: Object,
