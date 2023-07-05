@@ -1,5 +1,5 @@
 <template>
-    <router-view :viewport="viewport"/>
+    <router-view :viewport="viewport" :device="device"/>
 </template>
 
 <script setup>
@@ -23,6 +23,13 @@
         isMax1150: window.innerWidth <= 1150
     });
 
+    const device = ref({
+        isMobile: window.matchMedia("(pointer: coarse)").matches,
+        isPC: window.matchMedia("(pointer: fine)").matches,
+        isLandscape: window.matchMedia("(orientation: landscape)").matches,
+        isPortrait: window.matchMedia("(orientation: portrait)").matches
+    });
+
     function updateViewport() {
         viewport.value = {
             w: window.innerWidth,
@@ -40,6 +47,13 @@
             isMax1000: window.innerWidth <= 1000,
             isMax1150: window.innerWidth <= 1150
         };
+
+        device.value = {
+            isMobile: window.matchMedia("(pointer: coarse)").matches,
+            isPC: window.matchMedia("(pointer: fine)").matches,
+            isLandscape: window.matchMedia("(orientation: landscape)").matches,
+            isPortrait: window.matchMedia("(orientation: portrait)").matches
+        }
     }
 
     onMounted(() => {
