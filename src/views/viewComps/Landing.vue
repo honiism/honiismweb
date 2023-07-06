@@ -31,10 +31,10 @@
         device: Object
     });
 
-    let parallaxEl;
-
     const mouse = {x: 0, y: 0, z: 0};
+
     let rotateDeg = 0;
+    let parallaxEl;
 
     function transformParallax(cursorPosX) {
         parallaxEl.forEach((el) => {
@@ -58,14 +58,14 @@
                 mouse.z = (cursorPosX - elementLeft) * isInLeft * 0.2;
             }
 
-            gsap.set(el, {
+            gsap.to(el, {
                 xPercent: "-50",
                 yPercent: "-50",
                 x: -mouse.x * speedX,
                 y: mouse.y * speedY,
                 z: mouse.z,
                 rotationY: rotateDeg,
-                transition: "0.45s cubic-bezier(0.2, 0.49, 0.32, 0.99)" // find another easing
+                transition: "0.45s cubic-bezier(0.2, 0.49, 0.32, 0.99)"
             });
         });
     }
