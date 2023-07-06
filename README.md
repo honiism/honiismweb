@@ -89,7 +89,7 @@ parallaxEl.forEach((el) => {
 
 ### 3. Transformation
 - We need to translate the x axis of an element by adding the distance of our mouse in the x axis (`mouse.x`) to -50% and also multiplying it by the speed so it doesn't move too fast.
-    - Note: `xVal` is negative so it has opposite effects.
+    - Note: `mouse.x` is negative so it has opposite effects.
 - We'll also add rotation y by a certain degrees.
 - Then we need to add the distance of our mouse in the y axis (`mouse.y`) to -50% and multiply it by the speedY.
 - Then we put the layers 23000px away from us using the perspective. 
@@ -128,9 +128,9 @@ function transformParallax(cursorPosX) {
          * If I manually translate the elements using JS and CSS, it'll fight with my other GSAP animations.
          * The code below is basically the same as following:
          * 
-         * el.style.transform = `translateX(calc(-50% + ${-xVal * speedX}px))`
-                + `translateY(calc(-50% + ${yVal * speedY}px))`
-                + `translateZ(${zVal}px)`
+         * el.style.transform = `translateX(calc(-50% + ${-mouse.x * speedX}px))`
+                + `translateY(calc(-50% + ${mouse.y * speedY}px))`
+                + `translateZ(${mouse.z}px)`
                 + `rotateY(${rotateDeg}deg)`
                 + `perspective(2300px)`;
 
