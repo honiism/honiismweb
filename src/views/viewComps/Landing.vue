@@ -7,6 +7,9 @@
         <img class="parallax parallax--squiggle_1t noZ" src="../../assets/images/squiggles_1t.svg" data-speedx="0" data-speedy="0.1">
         <img class="parallax parallax--squiggle_2t noZ" src="../../assets/images/squiggles_2t.svg" data-speedx="0" data-speedy="0.095">
         <img class="parallax parallax--squiggle_3t noZ" src="../../assets/images/squiggles_3t.svg" data-speedx="0" data-speedy="0.09">
+
+        <StarsBg :stars-num="10"/>
+
         <img class="parallax parallax--sparkles_1" src="../../assets/images/star_sparkles.svg" data-speedx="0.27" data-speedy="0.095">
         <img class="parallax parallax--sparkles_2" src="../../assets/images/star_sparkles.svg" data-speedx="0.25" data-speedy="0.09">
         <img class="parallax parallax--ring_planet" src="../../assets/images/ring_planet.svg" data-speedx="0.15" data-speedy="0.085">
@@ -25,6 +28,8 @@
 <script setup>
     import { onMounted } from 'vue';
     import { gsap } from '../../js/vendor';
+
+    import StarsBg from "../../components/StarsBg.vue";
 
     const props = defineProps({
         viewport: Object,
